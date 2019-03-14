@@ -23,5 +23,20 @@ export default mockWeatherList = [
     id: 5,
     cityname: 'Tokyo',
     temp: 60
+  },
+  {
+    id: 6,
+    cityname: 'Random',
+    temp: 60
+  },
+  {
+    id: 7,
+    cityname: 'Random',
+    temp: 60
+  },
+  {
+    id: 8,
+    cityname: 'Random',
+    temp: 60
   }
 ];

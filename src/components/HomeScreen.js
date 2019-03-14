@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, AppRegistry, Button, FlatList, StyleSheet
+  View, ScrollView, Text, AppRegistry, Button, FlatList, StyleSheet
 } from 'react-native';
 import mockWeatherList from '../mockData';
 import WeatherCard from './WeatherCard';
@@ -8,15 +8,17 @@ import WeatherCard from './WeatherCard';
 const HomeScreen = props => (
   <View>
     <Text style={styles.screen_title}>Home Screen</Text>
-    <FlatList
-      data={mockWeatherList}
-      keyExtractor={(item) => item.id.toString()}
-      renderItem={
-        ({ item }) => (
-          <WeatherCard item={item} />
-        )
-      }
-    />
+    <ScrollView style={styles.scroll_view}>
+      <FlatList
+        data={mockWeatherList}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={
+          ({ item }) => (
+            <WeatherCard item={item} />
+          )
+        }
+      />
+    </ScrollView>
     <Button
       title="Go to Details"
       onPress={() => props.navigation.navigate('Details')}
@@ -30,6 +32,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     textAlign: 'center'
+  },
+  scroll_view: {
+    height: 500
   }
 });
 

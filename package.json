@@ -24,9 +24,16 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.5.0",
     "metro-react-native-babel-preset": "^0.53.0",
+    "react-native-jest-mocks": "^1.4.0",
     "react-test-renderer": "16.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base|@react-navigation)"
+    ]
   }
 }

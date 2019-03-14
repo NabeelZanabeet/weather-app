@@ -14,7 +14,7 @@ const HomeScreen = props => (
         keyExtractor={(item) => item.id.toString()}
         renderItem={
           ({ item }) => (
-            <WeatherCard item={item} navigation={props.navigation} />
+            <WeatherCard city={item} navigation={props.navigation} />
           )
         }
       />

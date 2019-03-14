@@ -7,11 +7,11 @@ const WeatherCard = props => (
   <TouchableHighlight
     style={styles.card}
     underlayColor="white"
-    onPress={() => props.navigation.navigate('Details')}
+    onPress={() => props.navigation.navigate('Details', { city: props.city })}
   >
     <View>
-      <Text style={styles.cityname}>{props.item.cityname}</Text>
-      <Text style={styles.temp}>Tempreture: {props.item.temp} C</Text>
+      <Text style={styles.cityname}>{props.city.cityname}</Text>
+      <Text style={styles.temp}>Tempreture: {props.city.temp} C</Text>
     </View>
   </TouchableHighlight>
 );

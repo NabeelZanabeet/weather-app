@@ -8,10 +8,12 @@ const DetailsScreen = props => (
   <View>
     <Text style={styles.screen_title}>Details Screen</Text>
     <DetailedWeatherCard city={props.navigation.getParam('city')} />
-    <Button
-      title="Back to Home"
-      onPress={() => props.navigation.navigate('Home')}
-    />
+    <View style={styles.back_btn}>
+      <Button
+        title="Back"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+    </View>
   </View>
 );
 
@@ -21,6 +23,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     textAlign: 'center'
+  },
+  back_btn: {
+    width: 200,
+    justifyContent: 'center',
+    alignSelf: 'center'
   }
 });
 

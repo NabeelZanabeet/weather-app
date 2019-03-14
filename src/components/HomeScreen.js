@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, ScrollView, Text, AppRegistry, Button, FlatList, StyleSheet
+  View, ScrollView, Text, AppRegistry, FlatList, StyleSheet
 } from 'react-native';
 import mockWeatherList from '../mockData';
 import WeatherCard from './WeatherCard';
@@ -19,10 +19,6 @@ const HomeScreen = props => (
         }
       />
     </ScrollView>
-    <Button
-      title="Go to Details"
-      onPress={() => props.navigation.navigate('Details')}
-    />
   </View>
 );
 

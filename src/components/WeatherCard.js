@@ -1,20 +1,25 @@
 import React from 'react';
 import {
-  View, Text, AppRegistry, StyleSheet
+  View, Text, AppRegistry, StyleSheet, TouchableHighlight
 } from 'react-native';
 
 const WeatherCard = props => (
-  <View style={styles.card}>
-    <Text style={styles.cityname}>{props.item.cityname}</Text>
-    <Text style={styles.temp}>Tempreture: {props.item.temp} C</Text>
-  </View>
+  <TouchableHighlight
+    style={styles.card}
+    underlayColor="white"
+    onPress={() => props.navigation.navigate('Details')}
+  >
+    <View>
+      <Text style={styles.cityname}>{props.item.cityname}</Text>
+      <Text style={styles.temp}>Tempreture: {props.item.temp} C</Text>
+    </View>
+  </TouchableHighlight>
 );
 
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#D0D0D0',
     padding: 10,
-    textAlign: 'center',
     borderRadius: 20,
     margin: 20
   },

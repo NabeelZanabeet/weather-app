@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
@@ -21,9 +21,18 @@ export default class WeatherApp extends Component {
   render() {
     return (
       <View>
-        <Text> Weather App </Text>
+        <Text style={styles.app_title}> Weather App </Text>
         <AppContainer />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  app_title: {
+    margin: 30,
+    fontSize: 30,
+    color: 'black',
+    textAlign: 'center'
+  }
+});

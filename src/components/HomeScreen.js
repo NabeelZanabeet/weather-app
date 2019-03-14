@@ -3,6 +3,7 @@ import {
   View, Text, AppRegistry, Button, FlatList
 } from 'react-native';
 import mockWeatherList from '../mockData';
+import WeatherCard from './WeatherCard';
 
 const HomeScreen = props => (
   <View>
@@ -12,10 +13,7 @@ const HomeScreen = props => (
       keyExtractor={(item) => item.id.toString()}
       renderItem={
         ({ item }) => (
-          <View>
-            <Text>{item.cityname}</Text>
-            <Text>{item.temp}</Text>
-          </View>
+          <WeatherCard item={item} />
         )
       }
     />

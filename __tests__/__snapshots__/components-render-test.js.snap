@@ -1,31 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render 1`] = `
+exports[`App should render snapshot 1`] = `
 <View>
   <WeatherApp />
 </View>
 `;
 
-exports[`DetailsScreen should render 1`] = `
-<View>
-  <Text>
-    Details Screen
+exports[`DetailedWeatherCard should render snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#D0D0D0",
+      "borderRadius": 20,
+      "margin": 15,
+      "padding": 10,
+      "textAlign": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    London
   </Text>
-  <Button
-    onPress={[Function]}
-    title="Back to Home"
-  />
+  <Text
+    style={
+      Object {
+        "color": "blue",
+        "fontSize": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    Tempreture: 
+    20
+     K
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "blue",
+        "fontSize": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    Humidity: 
+    10
+  </Text>
 </View>
 `;
 
-exports[`HomeScreen should render 1`] = `
+exports[`HomeScreen should render snapshot 1`] = `
 <View>
-  <Text>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 20,
+        "margin": 10,
+        "textAlign": "center",
+      }
+    }
+  >
     Home Screen
   </Text>
-  <Button
-    onPress={[Function]}
-    title="Go to Details"
-  />
+  <ScrollView
+    style={
+      Object {
+        "height": 500,
+      }
+    }
+  >
+    <FlatList
+      data={
+        Array [
+          Object {
+            "cityname": "London",
+            "humidity": 10,
+            "id": 1,
+            "temp": 20,
+          },
+          Object {
+            "cityname": "Berlin",
+            "humidity": 15,
+            "id": 2,
+            "temp": 30,
+          },
+          Object {
+            "cityname": "Havana",
+            "humidity": 12,
+            "id": 3,
+            "temp": 40,
+          },
+          Object {
+            "cityname": "HongKong",
+            "humidity": 7,
+            "id": 4,
+            "temp": 50,
+          },
+          Object {
+            "cityname": "Tokyo",
+            "humidity": 88,
+            "id": 5,
+            "temp": 60,
+          },
+          Object {
+            "cityname": "Random",
+            "humidity": 14,
+            "id": 6,
+            "temp": 60,
+          },
+          Object {
+            "cityname": "Random",
+            "humidity": 17,
+            "id": 7,
+            "temp": 60,
+          },
+          Object {
+            "cityname": "Random",
+            "humidity": 32,
+            "id": 8,
+            "temp": 60,
+          },
+        ]
+      }
+      disableVirtualization={false}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onEndReachedThreshold={2}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      updateCellsBatchingPeriod={50}
+      windowSize={21}
+    />
+  </ScrollView>
 </View>
 `;

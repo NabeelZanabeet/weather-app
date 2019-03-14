@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View, ScrollView, Text, AppRegistry, FlatList, StyleSheet
 } from 'react-native';
-import mockWeatherList from '../mockData';
 import WeatherCard from './WeatherCard';
 
 const HomeScreen = props => (
@@ -10,7 +9,7 @@ const HomeScreen = props => (
     <Text style={styles.screen_title}>Home Screen</Text>
     <ScrollView style={styles.scroll_view}>
       <FlatList
-        data={mockWeatherList}
+        data={props.cities}
         keyExtractor={(item) => item.id.toString()}
         renderItem={
           ({ item }) => (

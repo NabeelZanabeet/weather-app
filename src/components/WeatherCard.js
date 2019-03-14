@@ -10,8 +10,8 @@ const WeatherCard = props => (
     onPress={() => props.navigation.navigate('Details', { city: props.city })}
   >
     <View>
-      <Text style={styles.cityname}>{props.city.cityname}</Text>
-      <Text style={styles.temp}>Tempreture: {props.city.temp} C</Text>
+      <Text style={styles.cityname}>{props.city.name}</Text>
+      <Text style={styles.temp}>Temperature: {parseInt(props.city.main.temp - 273, 10)} C</Text>
     </View>
   </TouchableHighlight>
 );
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   temp: {
-    fontSize: 20,
+    fontSize: 15,
     color: 'blue',
     textAlign: 'center',
   }

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {
-  Text, View
+  View
 } from 'react-native';
+import WeatherApp from './components/WeatherAppContainer';
 
 export default class App extends Component {
   render() {
     return (
       <View>
-        <Text>Welcome to React Native!</Text>
+        <WeatherApp />
       </View>
     );
   }

@@ -14,7 +14,7 @@ const WeatherCard = props => {
         && (
           <TouchableHighlight
             style={styles.touchable_icon}
-            onPress={() => deleteCity(props.city.id)}
+            onPress={() => deleteCity(city.id)}
           >
             <TrashIcon />
           </TouchableHighlight>

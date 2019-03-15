@@ -1,30 +1,66 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { Component } from 'react';
 import {
-  View, ScrollView, Text, AppRegistry, FlatList, StyleSheet
+  View, ScrollView, Text, AppRegistry, FlatList, StyleSheet, TouchableHighlight
 } from 'react-native';
 import WeatherCard from './WeatherCard';
+import PlusIcon from '../icons/PlusIcon';
+import InputCityModal from './InputCityModal';
 
-const HomeScreen = props => (
-  <View>
-    <Text style={styles.screen_title}>Home Screen</Text>
-    <ScrollView style={styles.scroll_view}>
-      <FlatList
-        data={props.cities}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={
-          ({ item }) => (
-            <WeatherCard
-              city={item}
-              citiesCount={props.cities.length}
-              navigation={props.navigation}
-              deleteCity={props.deleteCity}
-            />
-          )
-        }
-      />
-    </ScrollView>
-  </View>
-);
+export default class HomeScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalVisible: false
+    };
+  }
+
+  setModalVisible = visible => {
+    this.setState({ modalVisible: visible });
+  }
+
+  render() {
+    const {
+      cities, navigation, deleteCity, addCity
+    } = this.props;
+    const { modalVisible } = this.state;
+    const { setModalVisible } = this;
+    return (
+      <View>
+        <Text style={styles.screen_title}>Home Screen</Text>
+        <TouchableHighlight
+          style={styles.plus_icon}
+          underlayColor="white"
+          onPress={() => this.setModalVisible(true)}
+        >
+          <PlusIcon />
+        </TouchableHighlight>
+        <InputCityModal
+          cities={cities}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          addCity={addCity}
+        />
+        <ScrollView style={styles.scroll_view}>
+          <FlatList
+            data={cities}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={
+              ({ item }) => (
+                <WeatherCard
+                  city={item}
+                  citiesCount={cities.length}
+                  navigation={navigation}
+                  deleteCity={deleteCity}
+                />
+              )
+            }
+          />
+        </ScrollView>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   screen_title: {
@@ -35,8 +71,11 @@ const styles = StyleSheet.create({
   },
   scroll_view: {
     height: 500
+  },
+  plus_icon: {
+    justifyContent: 'center',
+    alignSelf: 'center'
   }
 });
 
-export default HomeScreen;
 AppRegistry.registerComponent('HomeScreen', () => HomeScreen);

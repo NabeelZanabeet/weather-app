@@ -52,11 +52,20 @@ export default class WeatherApp extends Component {
     this.setState({ cities: this.state.cities.filter(city => (id !== city.id)) });
   }
 
+  addCity = id => {
+    this.requestCityForcast(id);
+  }
+
   render() {
     return (
       <View>
         <Text style={styles.app_title}> Weather App </Text>
-        <AppContainer screenProps={{ cities: this.state.cities, deleteCity: this.deleteCity }} />
+        <AppContainer screenProps={{
+          cities: this.state.cities,
+          deleteCity: this.deleteCity,
+          addCity: this.addCity
+        }}
+        />
       </View>
     );
   }

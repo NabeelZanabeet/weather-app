@@ -44,15 +44,19 @@ export default class WeatherApp extends Component {
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
-        console.error(error);
+        console.log(error);
       });
   };
+
+  deleteCity = id => {
+    this.setState({ cities: this.state.cities.filter(city => (id !== city.id)) });
+  }
 
   render() {
     return (
       <View>
         <Text style={styles.app_title}> Weather App </Text>
-        <AppContainer screenProps={{ cities: this.state.cities }} />
+        <AppContainer screenProps={{ cities: this.state.cities, deleteCity: this.deleteCity }} />
       </View>
     );
   }
@@ -63,6 +67,12 @@ const styles = StyleSheet.create({
     margin: 30,
     fontSize: 30,
     color: 'black',
+    textAlign: 'center'
+  },
+  error: {
+    marginTop: 20,
+    padding: 20,
+    fontSize: 20,
     textAlign: 'center'
   }
 });

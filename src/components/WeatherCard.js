@@ -2,26 +2,57 @@ import React from 'react';
 import {
   View, Text, AppRegistry, StyleSheet, TouchableHighlight
 } from 'react-native';
+import TrashIcon from '../icons/TrashIcon';
 
-const WeatherCard = props => (
-  <TouchableHighlight
-    style={styles.card}
-    underlayColor="white"
-    onPress={() => props.navigation.navigate('Details', { city: props.city })}
-  >
-    <View>
-      <Text style={styles.cityname}>{props.city.name}</Text>
-      <Text style={styles.temp}>Temperature: {parseInt(props.city.main.temp - 273, 10)} C</Text>
+const WeatherCard = props => {
+  const {
+    citiesCount, deleteCity, navigation, city
+  } = props;
+  return (
+    <View style={styles.card}>
+      {(citiesCount > 1)
+        && (
+          <TouchableHighlight
+            style={styles.touchable_icon}
+            onPress={() => deleteCity(props.city.id)}
+          >
+            <TrashIcon />
+          </TouchableHighlight>
+        )
+      }
+      <TouchableHighlight
+        underlayColor="white"
+        style={styles.touchable_city}
+        onPress={() => navigation.navigate('Details', { city })}
+      >
+        <View>
+          <Text style={styles.cityname}>{city.name}</Text>
+          <Text style={styles.temp}>Temperature: {parseInt(city.main.temp - 273, 10)} C</Text>
+        </View>
+      </TouchableHighlight>
     </View>
-  </TouchableHighlight>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   card: {
+    flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#D0D0D0',
-    padding: 10,
+    padding: 5,
     borderRadius: 20,
     margin: 20
+  },
+  touchable_city: {
+    flex: 1,
+    alignSelf: 'center',
+    borderRadius: 20,
+    padding: 5
+  },
+  touchable_icon: {
+    margin: 10,
+    backgroundColor: '#D0D0D0',
+    alignSelf: 'center'
   },
   cityname: {
     fontSize: 20,

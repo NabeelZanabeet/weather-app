@@ -3,15 +3,19 @@ import {
   View, Text, AppRegistry, StyleSheet
 } from 'react-native';
 
-const DetailedWeatherCard = props => (
-  <View style={styles.card}>
-    <Text style={styles.cityname}>{props.city.name}</Text>
-    <Text style={styles.detail}>Temperature: {parseInt(props.city.main.temp - 273, 10)} C</Text>
-    <Text style={styles.detail}>Humidity: {props.city.main.humidity}</Text>
-    <Text style={styles.detail}>Temp Min: {parseInt(props.city.main.temp_min - 273, 10)} C</Text>
-    <Text style={styles.detail}>Temp Max: {parseInt(props.city.main.temp_max - 273, 10)} C</Text>
-  </View>
-);
+const DetailedWeatherCard = props => {
+  const { city } = props;
+  return (
+    <View style={styles.card}>
+      <Text style={styles.cityname}>{city.name}</Text>
+      <Text style={styles.detail}>Temperature: {parseInt(city.main.temp - 273, 10)} C</Text>
+      <Text style={styles.detail}>Humidity: {city.main.humidity} %</Text>
+      <Text style={styles.detail}>Temp Min: {parseInt(city.main.temp_min - 273, 10)} C</Text>
+      <Text style={styles.detail}>Temp Max: {parseInt(city.main.temp_max - 273, 10)} C</Text>
+      <Text style={styles.detail}>Wind Speed: {city.wind.speed} mph</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   card: {

@@ -33,7 +33,7 @@ export default class HomeScreen extends Component {
           underlayColor="white"
           onPress={() => this.setModalVisible(true)}
         >
-          <PlusIcon />
+          <PlusIcon size={50} color="#900" />
         </TouchableHighlight>
         <InputCityModal
           cities={cities}

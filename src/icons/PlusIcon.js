@@ -2,8 +2,8 @@ import React from 'react';
 import { AppRegistry } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const PlusIcon = () => (
-  <Icon name="plus-circle" size={50} color="#900" />
+const PlusIcon = props => (
+  <Icon name="plus-circle" {...props} />
 );
 
 export default PlusIcon;

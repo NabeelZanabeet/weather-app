@@ -13,7 +13,11 @@ const AppNavigator = createSwitchNavigator(
         <HomeScreen {...screenProps} navigation={navigation} />
       )
     },
-    Details: { screen: DetailsScreen }
+    Details: {
+      screen: ({ screenProps, navigation }) => (
+        <DetailsScreen notes={screenProps.notes} navigation={navigation} />
+      )
+    }
   },
   {
     initialRouteName: 'Home'
@@ -26,7 +30,27 @@ export default class WeatherApp extends Component {
   constructor() {
     super();
     this.state = {
-      cities: []
+      cities: [],
+      notes: [{
+        id: 1,
+        text: 'note one'
+      },
+      {
+        id: 2,
+        text: 'note two'
+      },
+      {
+        id: 3,
+        text: 'note two'
+      },
+      {
+        id: 4,
+        text: 'note two'
+      },
+      {
+        id: 5,
+        text: 'note two'
+      }]
     };
   }
 
@@ -56,14 +80,20 @@ export default class WeatherApp extends Component {
     this.requestCityForcast(id);
   }
 
+  addNote = text => {
+
+  }
+
   render() {
     return (
       <View>
         <Text style={styles.app_title}> Weather App </Text>
         <AppContainer screenProps={{
           cities: this.state.cities,
+          notes: this.state.notes,
           deleteCity: this.deleteCity,
-          addCity: this.addCity
+          addCity: this.addCity,
+          addNote: this.addNote
         }}
         />
       </View>
@@ -73,7 +103,7 @@ export default class WeatherApp extends Component {
 
 const styles = StyleSheet.create({
   app_title: {
-    margin: 30,
+    margin: 25,
     fontSize: 30,
     color: 'black',
     textAlign: 'center'

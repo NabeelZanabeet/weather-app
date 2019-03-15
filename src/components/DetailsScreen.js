@@ -3,11 +3,13 @@ import {
   View, Text, AppRegistry, Button, StyleSheet
 } from 'react-native';
 import DetailedWeatherCard from './DetailedWeatherCard';
+import NotesSection from './NotesSection';
 
 const DetailsScreen = props => (
   <View>
     <Text style={styles.screen_title}>Details Screen</Text>
     <DetailedWeatherCard city={props.navigation.getParam('city')} />
+    <NotesSection notes={props.notes} />
     <View style={styles.back_btn}>
       <Button
         title="Back"

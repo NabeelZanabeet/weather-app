@@ -15,7 +15,11 @@ const AppNavigator = createSwitchNavigator(
     },
     Details: {
       screen: ({ screenProps, navigation }) => (
-        <DetailsScreen notes={screenProps.notes} navigation={navigation} />
+        <DetailsScreen
+          notes={screenProps.notes}
+          addNote={screenProps.addNote}
+          navigation={navigation}
+        />
       )
     }
   },
@@ -31,26 +35,7 @@ export default class WeatherApp extends Component {
     super();
     this.state = {
       cities: [],
-      notes: [{
-        id: 1,
-        text: 'note one'
-      },
-      {
-        id: 2,
-        text: 'note two'
-      },
-      {
-        id: 3,
-        text: 'note two'
-      },
-      {
-        id: 4,
-        text: 'note two'
-      },
-      {
-        id: 5,
-        text: 'note two'
-      }]
+      notes: []
     };
   }
 
@@ -81,7 +66,11 @@ export default class WeatherApp extends Component {
   }
 
   addNote = text => {
-
+    const noteToAdd = {
+      id: this.state.notes.length + 1,
+      text
+    };
+    this.setState({ notes: this.state.notes.concat(noteToAdd) });
   }
 
   render() {
@@ -103,8 +92,8 @@ export default class WeatherApp extends Component {
 
 const styles = StyleSheet.create({
   app_title: {
-    margin: 25,
-    fontSize: 30,
+    margin: 20,
+    fontSize: 25,
     color: 'black',
     textAlign: 'center'
   },

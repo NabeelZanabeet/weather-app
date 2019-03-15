@@ -9,7 +9,7 @@ const DetailsScreen = props => (
   <View>
     <Text style={styles.screen_title}>Details Screen</Text>
     <DetailedWeatherCard city={props.navigation.getParam('city')} />
-    <NotesSection notes={props.notes} />
+    <NotesSection notes={props.notes} addNote={props.addNote} />
     <View style={styles.back_btn}>
       <Button
         title="Back"
@@ -22,7 +22,7 @@ const DetailsScreen = props => (
 const styles = StyleSheet.create({
   screen_title: {
     margin: 10,
-    fontSize: 20,
+    fontSize: 18,
     color: 'black',
     textAlign: 'center'
   },

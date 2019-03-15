@@ -65,7 +65,7 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
   screen_title: {
     margin: 10,
-    fontSize: 20,
+    fontSize: 18,
     color: 'black',
     textAlign: 'center'
   },

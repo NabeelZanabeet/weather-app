@@ -10,8 +10,6 @@ const DetailedWeatherCard = props => {
       <Text style={styles.cityname}>{city.name}</Text>
       <Text style={styles.detail}>Temperature: {parseInt(city.main.temp - 273, 10)} C</Text>
       <Text style={styles.detail}>Humidity: {city.main.humidity} %</Text>
-      <Text style={styles.detail}>Temp Min: {parseInt(city.main.temp_min - 273, 10)} C</Text>
-      <Text style={styles.detail}>Temp Max: {parseInt(city.main.temp_max - 273, 10)} C</Text>
       <Text style={styles.detail}>Wind Speed: {city.wind.speed} mph</Text>
     </View>
   );

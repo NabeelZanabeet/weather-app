@@ -46,7 +46,7 @@ export default class NotesSection extends Component {
 
 const styles = StyleSheet.create({
   scroll_view: {
-    height: 200,
+    height: 150,
     marginBottom: 20
   },
   section_title: {

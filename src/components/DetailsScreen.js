@@ -5,19 +5,22 @@ import {
 import DetailedWeatherCard from './DetailedWeatherCard';
 import NotesSection from './NotesSection';
 
-const DetailsScreen = props => (
-  <View>
-    <Text style={styles.screen_title}>Details Screen</Text>
-    <DetailedWeatherCard city={props.navigation.getParam('city')} />
-    <NotesSection notes={props.notes} addNote={props.addNote} />
-    <View style={styles.back_btn}>
-      <Button
-        title="Back"
-        onPress={() => props.navigation.navigate('Home')}
-      />
+const DetailsScreen = props => {
+  const { navigation, addNote, notes } = props;
+  return (
+    <View>
+      <Text style={styles.screen_title}>Details Screen</Text>
+      <DetailedWeatherCard city={navigation.getParam('city')} />
+      <NotesSection notes={notes} addNote={addNote} />
+      <View style={styles.back_btn}>
+        <Button
+          title="Back"
+          onPress={() => navigation.navigate('Home')}
+        />
+      </View>
     </View>
-  </View>
-);
+  );
+}
 
 const styles = StyleSheet.create({
   screen_title: {

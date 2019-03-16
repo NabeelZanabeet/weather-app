@@ -1,14 +1,34 @@
 // Note: test renderer must be required after react-native.
 import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import App from '../src/App';
 import HomeScreen from '../src/components/HomeScreen';
 import DetailedWeatherCard from '../src/components/DetailedWeatherCard';
+import InputCityModal from '../src/components/InputCityModal';
+import NotesSection from '../src/components/NotesSection';
 
-it('HomeScreen renders correctly', () => {
-  renderer.create(<HomeScreen />);
+it('InputCityModal should render snapshot', () => {
+  const addedCities = [{
+    id: 1819729,
+    name: 'Hong Kong',
+    country: 'HK',
+    coord: {
+      lon: 114.157692,
+      lat: 22.285521
+    }
+  }];
+  const component = shallow(<InputCityModal modalVisible cities={addedCities} />);
+  expect(component).toMatchSnapshot();
+});
+
+it('NotesSection should render snapshot', () => {
+  const notes = [{
+    id: 1,
+    text: 'test note'
+  }];
+  const component = shallow(<NotesSection notes={notes} />);
+  expect(component).toMatchSnapshot();
 });
 
 it('HomeScreen should render snapshot', () => {
@@ -16,27 +36,19 @@ it('HomeScreen should render snapshot', () => {
   expect(component).toMatchSnapshot();
 });
 
-it('DetailedWeatherCard renders correctly', () => {
-  const city = {
-    cityname: 'London',
-    temp: 20,
-    humidity: 10
-  };
-  renderer.create(<DetailedWeatherCard city={city} />);
-});
-
 it('DetailedWeatherCard should render snapshot', () => {
   const city = {
-    cityname: 'London',
-    temp: 20,
-    humidity: 10
+    name: 'London',
+    main: {
+      temp: 20,
+      humidity: 10
+    },
+    wind: {
+      speed: 20
+    }
   };
   const component = shallow(<DetailedWeatherCard city={city} />);
   expect(component).toMatchSnapshot();
-});
-
-it('App renders correctly', () => {
-  renderer.create(<App />);
 });
 
 it('App should render snapshot', () => {

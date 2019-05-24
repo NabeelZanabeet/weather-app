@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import {
-  View, ScrollView, Text, AppRegistry, FlatList, StyleSheet, TouchableHighlight
+  View, Text, AppRegistry, FlatList, StyleSheet, TouchableHighlight
 } from 'react-native';
 import WeatherCard from './WeatherCard';
 import PlusIcon from '../icons/PlusIcon';
@@ -41,22 +41,21 @@ export default class HomeScreen extends Component {
           setModalVisible={setModalVisible}
           addCity={addCity}
         />
-        <ScrollView style={styles.scroll_view}>
-          <FlatList
-            data={cities}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={
-              ({ item }) => (
-                <WeatherCard
-                  city={item}
-                  citiesCount={cities.length}
-                  navigation={navigation}
-                  deleteCity={deleteCity}
-                />
-              )
-            }
-          />
-        </ScrollView>
+        <FlatList
+          style={styles.cities_flat_list}
+          data={cities}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={
+            ({ item }) => (
+              <WeatherCard
+                city={item}
+                citiesCount={cities.length}
+                navigation={navigation}
+                deleteCity={deleteCity}
+              />
+            )
+          }
+        />
       </View>
     );
   }
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center'
   },
-  scroll_view: {
+  cities_flat_list: {
     height: 500
   },
   plus_icon: {

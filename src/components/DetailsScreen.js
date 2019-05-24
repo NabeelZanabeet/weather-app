@@ -20,7 +20,7 @@ const DetailsScreen = props => {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screen_title: {

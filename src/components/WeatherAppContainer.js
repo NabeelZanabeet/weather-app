@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
+import ErrorBoundary from './ErrorBoundary';
 import { API_BASE_URL, API_KEY, DEAFULT_CITIY_LIST } from '../ApiConfig';
 
 const AppNavigator = createSwitchNavigator(
@@ -76,15 +77,17 @@ export default class WeatherApp extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.app_title}> Weather App </Text>
-        <AppContainer screenProps={{
-          cities: this.state.cities,
-          notes: this.state.notes,
-          deleteCity: this.deleteCity,
-          addCity: this.addCity,
-          addNote: this.addNote
-        }}
-        />
+        <ErrorBoundary>
+          <Text style={styles.app_title}> Weather App </Text>
+          <AppContainer screenProps={{
+            cities: this.state.cities,
+            notes: this.state.notes,
+            deleteCity: this.deleteCity,
+            addCity: this.addCity,
+            addNote: this.addNote
+          }}
+          />
+        </ErrorBoundary>
       </View>
     );
   }
